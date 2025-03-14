@@ -8,8 +8,8 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  zoomLevel = 13;
-  initialPosition = [55.8617,4.2583]
+  const zoomLevel = 13;
+  const initialPosition = [55.8617,4.2583]
 
 
   const handleInputChange = (event) => {
