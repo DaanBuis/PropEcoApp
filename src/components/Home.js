@@ -74,4 +74,4 @@ function GetUPRN() {
     );
   }
   
-  export default Home;
+  export default getUPRN;
