@@ -1,20 +1,77 @@
-import React from "react"
+import React,{ useState } from "react"
 
-
-const Home = () => {
+function GetUPRN() {
+    const [inputValue, setInputValue] = useState('');
+    const [searchResults, setSearchResults] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    // Handle input change
+    const handleInputChange = (event) => {
+      setInputValue(event.target.value);
+    };
+  
+    // Handle form submission (making the function async)
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      const uprn = inputValue; // You can directly assign the value
+      setLoading(true); // Start loading
+  
+      const apiKey = process.env.REACT_APP_API_KEY; // Fetch your API key from .env
+  
+      try {
+        // Make the API request
+        const response = await fetch(`https://api.propeco.io/properties/${uprn}`, {
+          method: 'GET',
+          headers: {
+            'x-api-key': apiKey, // Correct header for API key
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+  
+        // Parse the response
+        const data = await response.json();
+  
+        // Set search results
+        setSearchResults(data);
+  
+      } catch (err) {
+        // Handle error if fetch fails
+        setError('Something went wrong: ' + err.message);
+      } finally {
+        // Stop loading
+        setLoading(false);
+      }
+    };
+  
     return (
-        <div>
-            <h3 className="text-center">Introductory JavaScript Course</h3>
-            <p className="px-4 pt-3">Welcome to this JavaScript course, created to test different interactive elements. Throughout this course, you will be taught different 
-                introductory JavaScript concepts and with the use of interactive elements such as Quizzes, Drag and Drop exercises, and Memory Games. The aim of this course 
-                is to find how well the interactive elements complement your learning experience, so it is important that when you go through this course you take note of how the interactivity affects your learning experience. 
-            </p>
-
-            <p className="px-4 pt-1">You can click here to get started straight away, or you can use the  page to navigate to the different topics.</p>
-            <p className="px-4 pt-1">If you have any questions or inqueries, please either see the page, or email DBUIS201@caledonian.ac.uk</p>
-        </div>
-    )
-}
-
-
-export default Home;
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Enter UPRN"
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Loading...' : 'Search'}
+          </button>
+        </form>
+  
+        {error && <p>{error}</p>}
+  
+        {searchResults && (
+          <div>
+            <h3>Search Results:</h3>
+            <pre>{JSON.stringify(searchResults, null, 2)}</pre>
+          </div>
+        )}
+      </div>
+    );
+  }
+  
+  export default Home;
