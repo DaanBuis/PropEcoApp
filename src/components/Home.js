@@ -56,6 +56,8 @@ function Home() {
 
   return (
     <div>
+
+        <div> 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -67,9 +69,12 @@ function Home() {
           {loading ? 'Loading...' : 'Search'}
         </button>
       </form>
-
+        </div>
       {error && <p>{error}</p>}
 
+      
+
+        <div>
      {!loading && searchResults && (
       <div style={{ height: '500px', width: '100%' }}>
       <MapContainer center={initialPosition} zoom={zoomLevel} style={{ width: '100%', height: '100%' }}>
@@ -77,6 +82,7 @@ function Home() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
+        {searchResults.location && searchResults.location.latitude && searchResults.location.longitude && (
             <Marker position={[searchResults.location.latitude, searchResults.location.longitude]}>
               <Popup>
                 <div>
@@ -87,10 +93,13 @@ function Home() {
                 </div>
               </Popup>
             </Marker>
+        )}
          
       </MapContainer>
     </div>
     )}
+
+</div>
 
 {/* {searchResults && !loading && (
         <div>
@@ -99,6 +108,7 @@ function Home() {
         </div>
       )} */}
     </div>
+
   );
 }
 
