@@ -1,5 +1,7 @@
 import React,{ useState } from "react"
 
+const Home = () => {
+
 function GetUPRN() {
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
@@ -49,7 +51,6 @@ function GetUPRN() {
   };
 }
 
-  const Home = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
