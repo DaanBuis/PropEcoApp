@@ -70,7 +70,7 @@ function Home() {
 
       {error && <p>{error}</p>}
 
-
+     {!loading && searchResults && (
       <div style={{ height: '500px', width: '100%' }}>
       <MapContainer center={initialPosition} zoom={zoomLevel} style={{ width: '100%', height: '100%' }}>
         <TileLayer
@@ -90,8 +90,9 @@ function Home() {
          
       </MapContainer>
     </div>
+    )}
 
-      {searchResults && (
+{searchResults && !loading && (
         <div>
           <h3>Search Results:</h3>
           <pre>{JSON.stringify(searchResults, null, 2)}</pre>
