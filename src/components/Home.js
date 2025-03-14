@@ -1,8 +1,6 @@
 import React,{ useState } from "react"
 
-const Home = () => {
-
-function GetUPRN() {
+function Home() {
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -75,6 +73,6 @@ function GetUPRN() {
       )}
     </div>
   );
-}
+
 
 export default Home;
