@@ -92,12 +92,12 @@ function Home() {
     </div>
     )}
 
-{searchResults && !loading && (
+{/* {searchResults && !loading && (
         <div>
           <h3>Search Results:</h3>
           <pre>{JSON.stringify(searchResults, null, 2)}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
