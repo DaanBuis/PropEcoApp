@@ -172,7 +172,7 @@ function Home() {
         )}
 
         {showRawData && (
-          <div style={{ width: "100%", maxHeight: "500px", overflow: "auto", backgroundColor: "#272822", color: "#fff", padding: "20px", borderRadius: "10px" }}>
+          <div style={{ width: "100%", maxHeight: "500px", overflow: "auto", backgroundColor: "grey", color: "#fff", padding: "20px", borderRadius: "10px" }}>
            <ul>
               {Object.entries(searchResults).map(([key, value]) => (
                 <CollapsibleItem key={key} label={key} value={value} />
