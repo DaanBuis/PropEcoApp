@@ -19,7 +19,7 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const zoomLevel = 6;
+  const zoomLevel = 10;
 
 
   const handleInputChange = (event) => {
@@ -100,7 +100,7 @@ function Home() {
               <Popup>
                 <div>
                   <h4>Location: {searchResults.location.admin_boundaries.country_name}, {searchResults.location.admin_boundaries.region_name}</h4>
-                  <p><strong>In Conservation Area ? </strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
+                  <p><strong>In Conservation Area:</strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
                   <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2)}</p>
                   <p><strong>Average Gas Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2)}</p>
                   <p><strong>Average Electricity Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2)}</p>
@@ -113,7 +113,31 @@ function Home() {
          
       </MapContainer>
     </div>
+    
     )}
+    <div style={{
+    width: "300px",
+    height: "500px",
+    padding: "15px",
+    border: "3px solid #ddd",
+    borderRadius: "10px",
+    overflowY: "auto",
+    backgroundColor: "#f9f9f9"
+  }}>
+    <h3>Property Information</h3>
+    {searchResults ? (
+      <>
+        <p><strong>Country:</strong> {searchResults.location.admin_boundaries.country_name || "N/A"}</p>
+        <p><strong>Local Authority District:</strong> {searchResults.location.admin_boundaries.local_authority_district_name || "N/A"}</p>
+        <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2) || "N/A"}</p>
+        <p><strong>In Conservation Area?</strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
+        <p><strong>Minimum and Maximum Temperatures:</strong> {searchResults.climate.historical.minimum_temperature.value.toFixed(2) || "N/A"} {searchResults.climate.historical.maximum_temperature.value.toFixed(2) || "N/A"}</p>
+        <p><strong>Air Quality (NOx Concentration Value):</strong> {searchResults.environment.air_quality.nox.value.toFixed(2) || "N/A"}</p>
+      </>
+    ) : (
+      <p>No data available.</p>
+    )}
+  </div>
 
 </div>
     </div>
