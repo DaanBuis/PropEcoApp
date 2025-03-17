@@ -5,6 +5,7 @@ import "../styles.css";
 import "leaflet/dist/leaflet.css";
 
 function Home() {
+  const icon = new L.Icon.Default();
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -88,7 +89,7 @@ function Home() {
         />
         {searchResults.location && searchResults.location.latitude && searchResults.location.longitude && (
           
-            <Marker position={[searchResults.location.latitude, searchResults.location.longitude]}>
+            <Marker position={[searchResults.location.latitude, searchResults.location.longitude]} icon={icon}>
               <Popup>
                 <div>
                   <h4>{searchResults.location.admin_boundaries_country_name}</h4>
