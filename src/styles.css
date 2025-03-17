@@ -8,6 +8,8 @@
   }
 
   .search-box {
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     padding: 10px;
     background: white;
@@ -40,6 +42,8 @@
   }
 
   .map-container {
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     width: 80%;
     max-width: 800px;
