@@ -56,6 +56,25 @@ function Home() {
     }
   };
 
+  const renderJsonAsList = (data, parentKey = '') => {
+    return Object.entries(data).map(([key, value]) => {
+      const displayKey = parentKey ? `${parentKey}.${key}` : key;
+      if (typeof value === 'object' && value !== null) {
+        return (
+          <li key={displayKey}>
+            <strong>{displayKey}:</strong>
+            <ul>{renderJsonAsList(value, displayKey)}</ul>
+          </li>
+        );
+      }
+      return (
+        <li key={displayKey}>
+          <strong>{displayKey}:</strong> {value?.toString() || 'N/A'}
+        </li>
+      );
+    });
+  };
+
   return (
     <div>
       <div className="search-box"> 
@@ -74,12 +93,7 @@ function Home() {
       </div>
       {error && <p>{error}</p>}
 
-      <button 
-        onClick={() => setShowRawData((prev) => !prev)}
-        style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer' }}
-      >
-        {showRawData ? 'Show Map & Info' : 'Show Raw Data'}
-      </button>
+      
 
       <div style={{ alignItems: "center", justifyContent: "center", display: "flex", paddingTop: "30px" }}>
         {!loading && searchResults && !showRawData && (
@@ -124,11 +138,20 @@ function Home() {
         )}
 
         {showRawData && (
-          <pre style={{ width: "100%", maxHeight: "500px", overflow: "auto", backgroundColor: "#272822", color: "#fff", padding: "20px", borderRadius: "10px" }}>
-            {JSON.stringify(searchResults, null, 2)}
-          </pre>
+          <div style={{ width: "100%", maxHeight: "500px", overflow: "auto", backgroundColor: "#272822", color: "#fff", padding: "20px", borderRadius: "10px" }}>
+          <ul>{renderJsonAsList(searchResults)}</ul>
+        </div>
         )}
       </div>
+
+      {!loading && searchResults && (  
+      <button 
+        onClick={() => setShowRawData((prev) => !prev)}
+        style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', alignItems: "center", justifyContent: "center", display: "flex" }}
+      >
+        {showRawData ? 'Show Map & Info' : 'Show Raw Data'}
+      </button>
+      )}
     </div>
   );
 }
