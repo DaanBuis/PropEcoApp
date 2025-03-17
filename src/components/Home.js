@@ -8,8 +8,8 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const zoomLevel = 13;
-  const initialPosition = [55.8617,4.2583]
+  const zoomLevel = 8;
+  const initialPosition = [55.8617, -4.2583]
 
 
   const handleInputChange = (event) => {
@@ -55,10 +55,10 @@ function Home() {
 
 
   return (
-    <div>
+    <div className="flex flex-col items-center min-h-screen bg-gray-100">
 
-        <div> 
-      <form onSubmit={handleSubmit}>
+        <div className="mt-4 w-full flex justify-center"> 
+      <form className="bg-white p-3 rounded-lg shadow-md flex space-x-2" onSubmit={handleSubmit}>
         <input
           type="text"
           value={inputValue}
@@ -76,7 +76,7 @@ function Home() {
 
         <div>
      {!loading && searchResults && (
-      <div style={{ height: '500px', width: '100%' }}>
+      <div className="mt-6 w-[80%] max-w-4xl h-[500px] bg-white shadow-lg rounded-lg overflow-hidden">
       <MapContainer center={initialPosition} zoom={zoomLevel} style={{ width: '100%', height: '100%' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -86,7 +86,7 @@ function Home() {
             <Marker position={[searchResults.location.latitude, searchResults.location.longitude]}>
               <Popup>
                 <div>
-                  <h4>{searchResults.location.country_name}</h4>
+                  <h4>{searchResults.location.admin_boundaries_country_name}</h4>
                   <p><strong>In Conservation Area ? </strong> ${searchResults.planning.conservation_areas.in_conservation_area}</p>
                   <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value}</p>
                 
