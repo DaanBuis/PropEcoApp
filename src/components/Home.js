@@ -13,6 +13,14 @@ function Home() {
     shadowSize: [41, 41],
   });
 
+  const icon2 = L.icon({
+    iconUrl: "../airplane.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -170,6 +178,10 @@ function Home() {
       </button>
         </div>
       )}
+
+      <footer>
+        <a href="https://www.flaticon.com/free-icons/plane" title="plane icons">Plane icons created by Freepik - Flaticon</a>
+      </footer>
     </div>
   );
 }
