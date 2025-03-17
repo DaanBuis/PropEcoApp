@@ -14,7 +14,7 @@ function Home() {
   });
 
   const icon2 = L.icon({
-    iconUrl: "../airplane.png",
+    iconUrl: "./airplane.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -179,7 +179,7 @@ function Home() {
         </div>
       )}
 
-      <footer  style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', textAlign: 'center', padding: '10px 0', backgroundColor: '#4CAF50', color: 'white' }}>
+      <footer  style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', textAlign: 'center', padding: '10px 0', color: 'white' }}>
         <a href="https://www.flaticon.com/free-icons/plane" title="plane icons">Plane icons created by Freepik - Flaticon</a>
       </footer>
     </div>
