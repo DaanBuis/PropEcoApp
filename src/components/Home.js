@@ -149,12 +149,12 @@ function Home() {
                 <Marker position={[searchResults.location.latitude, searchResults.location.longitude]} icon={icon}>
                   <Popup>
                     <div>
-                      <h4>Location: {searchResults.location.admin_boundaries.country_name || "N/A"}, {searchResults.location.admin_boundaries.region_name || "N/A"}</h4>
-                      <p><strong>In Conservation Area:</strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No' || "N/A"}</p>
-                      <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2) || "N/A"}</p>
-                      <p><strong>Average Gas Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2) || "N/A"}</p>
-                      <p><strong>Average Electricity Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2) || "N/A"}</p>
-                      <p><strong>Average House Price:</strong> £{searchResults.social.house_price_index.average_price || "N/A"}</p>
+                      <h4>Location: {searchResults.location?.admin_boundaries?.country_name != null ? searchResults.location.admin_boundaries.country_name : "N/A"}, {searchResults.location?.admin_boundaries?.region_name != null ? searchResults.location.admin_boundaries.region_name : "N/A"}</h4>
+                      <p><strong>In Conservation Area:</strong> {searchResults.planning?.conservation_areas?.in_conservation_area != null ? (searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No') : "N/A"}</p>
+                      <p><strong>Rainfall:</strong> {searchResults.climate?.historical?.average_rainfall?.value != null ? searchResults.climate.historical.average_rainfall.value.toFixed(2) : "N/A"}</p>
+                      <p><strong>Average Gas Costs:</strong> £{searchResults.energy?.average_energy_usage_stats?.lower_layer_super_output_area?.mean_gas_cost != null ? searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2) : 'N/A'}</p>
+                      <p><strong>Average Electricity Costs:</strong> £{searchResults.energy?.average_energy_usage_stats?.lower_layer_super_output_area?.mean_electricity_cost != null ? searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2) : 'N/A'}</p>
+                      <p><strong>Average House Price:</strong> £{searchResults.social?.house_price_index?.average_price != null ? searchResults.social.house_price_index.average_price : "N/A"}</p>
                     </div>
                   </Popup>
                 </Marker>
@@ -165,8 +165,8 @@ function Home() {
                 <Marker position={[searchResults.transportation.nearest_airport.latitude, searchResults.transportation.nearest_airport.longitude]} icon={icon2}>
                   <Popup>
                     <div>
-                      <h4>Nearest Airport: {searchResults.transportation.nearest_airport.name || "N/A"}</h4>
-                      <p><strong>Distance:</strong> {(searchResults.transportation.nearest_airport.distance / 1609).toFixed(1) || "N/A"} miles</p>
+                      <h4>Nearest Airport: {searchResults.transportation?.nearest_airport?.name != null ? searchResults.transportation.nearest_airport.name : "N/A"}</h4>
+                      <p><strong>Distance:</strong> {searchResults.transportation?.nearest_airport?.distance != null ? (searchResults.transportation.nearest_airport.distance / 1609).toFixed(1) : "N/A"} miles</p>
                     </div>
                   </Popup>
                 </Marker>
@@ -179,16 +179,16 @@ function Home() {
         {!loading && searchResults && !showRawData && (
           <div style={{ width: "300px", height: "500px", padding: "10px", paddingLeft: "40px", border: "3px solid #ddd", borderRadius: "10px", overflowY: "auto", backgroundColor: "#f9f9f9" }}>
             <h3>Property Information</h3>
-            <p><strong>Country:</strong> {searchResults.location.admin_boundaries.country_name || "N/A"}</p>
-            <p><strong>Local Authority District:</strong> {searchResults.location.admin_boundaries.local_authority_district_name || "N/A"}</p>
-            <p><strong>Average Gas Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2) || "N/A"}</p>
-            <p><strong>Average Electricity Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2) || "N/A"}</p>
-            <p><strong>Average House Price:</strong> £{searchResults.social.house_price_index.average_price || "N/A"}</p>
-            <p><strong>In Conservation Area?</strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No' || "N/A"}</p>
-            <p><strong>Greenspace (m²):</strong> {searchResults.environment.greenspace.greenspace_area.toFixed(0) || "N/A"}</p>
-            <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2) || "N/A"}</p>
-            <p><strong>Minimum and Maximum Temperatures:</strong> {searchResults.climate.historical.minimum_temperature.value.toFixed(1) || "N/A"}°/{searchResults.climate.historical.maximum_temperature.value.toFixed(1) || "N/A"}°</p>
-            <p><strong>Air Quality (NOx Concentration Value):</strong> {searchResults.environment.air_quality.nox.value.toFixed(2) || "N/A"}</p>
+            <p><strong>Country:</strong> {searchResults.location?.admin_boundaries?.country_name != null ? searchResults.location.admin_boundaries.country_name : "N/A"}</p>
+            <p><strong>Local Authority District:</strong> {searchResults.location?.admin_boundaries?.local_authority_district_name != null ? searchResults.location.admin_boundaries.local_authority_district_name : "N/A"}</p>
+            <p><strong>Average Gas Costs:</strong> £{searchResults.energy?.average_energy_usage_stats?.lower_layer_super_output_area?.mean_gas_cost != null ? searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2) : 'N/A'}</p>
+            <p><strong>Average Electricity Costs:</strong> £{searchResults.energy?.average_energy_usage_stats?.lower_layer_super_output_area?.mean_electricity_cost != null ? searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2) : 'N/A'}</p>
+            <p><strong>Average House Price:</strong> £{searchResults.social?.house_price_index?.average_price != null ? searchResults.social.house_price_index.average_price : "N/A"} </p>
+            <p><strong>In Conservation Area?</strong> {searchResults.planning?.conservation_areas?.in_conservation_area != null ? (searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No') : "N/A"}</p>
+            <p><strong>Greenspace (m²):</strong> {searchResults.environment?.greenspace?.greenspace_area != null ? searchResults.environment.greenspace.greenspace_area.toFixed(0) : "N/A"}</p>
+            <p><strong>Rainfall:</strong> {searchResults.climate?.historical?.average_rainfall?.value != null ? searchResults.climate.historical.average_rainfall.value.toFixed(2) : "N/A"}</p>
+            <p><strong>Minimum and Maximum Temperatures:</strong> {searchResults.climate?.historical?.minimum_temperature?.value != null ? searchResults.climate.historical.minimum_temperature.value.toFixed(1) : "N/A"}°/{searchResults.climate?.historical?.maximum_temperature?.value != null ? searchResults.climate.historical.maximum_temperature.value.toFixed(1) : "N/A"}°</p>
+            <p><strong>Air Quality (NOx Concentration Value):</strong> {searchResults.environment?.air_quality?.nox?.value != null ? searchResults.environment.air_quality.nox.value.toFixed(2) : "N/A"}</p>
           </div>
         )}
 
