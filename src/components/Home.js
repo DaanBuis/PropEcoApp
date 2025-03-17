@@ -86,9 +86,9 @@ function Home() {
 
       
 
-    <div>
+    <div style={{ alignItems:"center", justifyContent:"center", display:"flex"}}>
      {!loading && searchResults && (
-      <div style={{width: "700px", height: "500px", alignItems:"center", justifyContent:"center", display:"flex"}}>
+      <div style={{width: "700px", height: "500px"}}>
       <MapContainer center={[searchResults.location.latitude, searchResults.location.longitude]} zoom={zoomLevel} style={{ height: "500px", width: "100%",alignItems:"center", justifyContent:"center", display:"flex" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
