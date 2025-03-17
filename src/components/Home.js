@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import "../styles.css";
+import "leaflet/dist/leaflet.css";
 
 function Home() {
   const [inputValue, setInputValue] = useState('');
