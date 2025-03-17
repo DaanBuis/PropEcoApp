@@ -118,7 +118,8 @@ function Home() {
     <div style={{
     width: "300px",
     height: "500px",
-    padding: "15px",
+    padding: "10px",
+    paddingLeft:"30px",
     border: "3px solid #ddd",
     borderRadius: "10px",
     overflowY: "auto",
@@ -131,7 +132,7 @@ function Home() {
         <p><strong>Local Authority District:</strong> {searchResults.location.admin_boundaries.local_authority_district_name || "N/A"}</p>
         <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2) || "N/A"}</p>
         <p><strong>In Conservation Area?</strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
-        <p><strong>Minimum and Maximum Temperatures:</strong> {searchResults.climate.historical.minimum_temperature.value.toFixed(2) || "N/A"} {searchResults.climate.historical.maximum_temperature.value.toFixed(2) || "N/A"}</p>
+        <p><strong>Minimum and Maximum Temperatures:</strong> {searchResults.climate.historical.minimum_temperature.value.toFixed(1) || "N/A"}°/{searchResults.climate.historical.maximum_temperature.value.toFixed(1) || "N/A"}°</p>
         <p><strong>Air Quality (NOx Concentration Value):</strong> {searchResults.environment.air_quality.nox.value.toFixed(2) || "N/A"}</p>
       </>
     ) : (
