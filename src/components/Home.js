@@ -79,7 +79,7 @@ function Home() {
 
         <div>
      {!loading && searchResults && (
-      <div className="map-container">
+      <div className="map-container" style={{width: "100%", height: "500px"}}>
       <MapContainer center={initialPosition} zoom={zoomLevel} className="map">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
