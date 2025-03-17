@@ -11,7 +11,7 @@ function Home() {
   const [error, setError] = useState(null);
 
   const zoomLevel = 6;
-  const initialPosition = [55.8617, -4.2583]
+  const initialPosition = [54.8925, -2.9329]
 
 
   const handleInputChange = (event) => {
@@ -80,8 +80,8 @@ function Home() {
 
         <div>
      {!loading && searchResults && (
-      <div style={{width: "100%", height: "500px"}}>
-      <MapContainer key={searchResults?.location?.latitude || "default"} center={initialPosition} zoom={zoomLevel} style={{ height: "500px", width: "100%" }}>
+      <div style={{width: "700px", height: "500px"}}>
+      <MapContainer center={initialPosition} zoom={zoomLevel} style={{ height: "500px", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
