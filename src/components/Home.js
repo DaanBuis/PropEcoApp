@@ -58,7 +58,7 @@ function Home() {
 
   return (
     
-    <div className="container">
+    <div>
 
         <div className="search-box"> 
       <form className="search-form" onSubmit={handleSubmit}>
