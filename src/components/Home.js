@@ -154,7 +154,7 @@ function Home() {
                       <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2) || "N/A"}</p>
                       <p><strong>Average Gas Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2) || "N/A"}</p>
                       <p><strong>Average Electricity Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2) || "N/A"}</p>
-                      <p><strong>Average House Price:</strong> £{searchResults.social.house_price_index.average_price}</p>
+                      <p><strong>Average House Price:</strong> £{searchResults.social.house_price_index.average_price || "N/A"}</p>
                     </div>
                   </Popup>
                 </Marker>
@@ -165,8 +165,8 @@ function Home() {
                 <Marker position={[searchResults.transportation.nearest_airport.latitude, searchResults.transportation.nearest_airport.longitude]} icon={icon2}>
                   <Popup>
                     <div>
-                      <h4>Nearest Airport: {searchResults.transportation.nearest_airport.name}</h4>
-                      <p><strong>Distance:</strong> {(searchResults.transportation.nearest_airport.distance / 1609).toFixed(1)} miles</p>
+                      <h4>Nearest Airport: {searchResults.transportation.nearest_airport.name || "N/A"}</h4>
+                      <p><strong>Distance:</strong> {(searchResults.transportation.nearest_airport.distance / 1609).toFixed(1) || "N/A"} miles</p>
                     </div>
                   </Popup>
                 </Marker>
