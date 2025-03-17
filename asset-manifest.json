@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/PropEcoApp/static/css/main.2df2a025.css",
-    "main.js": "/PropEcoApp/static/js/main.5656a662.js",
+    "main.js": "/PropEcoApp/static/js/main.27d9e3a9.js",
     "static/js/453.076d1b94.chunk.js": "/PropEcoApp/static/js/453.076d1b94.chunk.js",
     "index.html": "/PropEcoApp/index.html",
     "main.2df2a025.css.map": "/PropEcoApp/static/css/main.2df2a025.css.map",
-    "main.5656a662.js.map": "/PropEcoApp/static/js/main.5656a662.js.map",
+    "main.27d9e3a9.js.map": "/PropEcoApp/static/js/main.27d9e3a9.js.map",
     "453.076d1b94.chunk.js.map": "/PropEcoApp/static/js/453.076d1b94.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2df2a025.css",
-    "static/js/main.5656a662.js"
+    "static/js/main.27d9e3a9.js"
   ]
 }
