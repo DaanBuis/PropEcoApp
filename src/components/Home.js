@@ -65,24 +65,33 @@ function Home() {
     }
   };
 
-  const renderJsonAsList = (data, parentKey = '') => {
-    return Object.entries(data).map(([key, value]) => {
-      const displayKey = parentKey ? `${parentKey}.${key}` : key;
-      if (typeof value === 'object' && value !== null) {
-        return (
-          <li key={displayKey}>
-            <strong>{displayKey}:</strong>
-            <ul>{renderJsonAsList(value, displayKey)}</ul>
-          </li>
-        );
-      }
+  const CollapsibleItem = ({ label, value }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    if (typeof value === 'object' && value !== null) {
       return (
-        <li key={displayKey}>
-          <strong>{displayKey}:</strong> {value?.toString() || 'N/A'}
+        <li>
+          <strong onClick={() => setIsOpen(!isOpen)} style={{ cursor: 'pointer' }}>
+            {label} {isOpen ? '▼' : '▶'}
+          </strong>
+          {isOpen && (
+            <ul>
+              {Object.entries(value).map(([key, subValue]) => (
+                <CollapsibleItem key={key} label={key} value={subValue} />
+              ))}
+            </ul>
+          )}
         </li>
       );
-    });
+    }
+
+    return (
+      <li>
+        <strong>{label}:</strong> {value?.toString() || 'N/A'}
+      </li>
+    );
   };
+
 
   return (
     <div>
@@ -164,7 +173,11 @@ function Home() {
 
         {showRawData && (
           <div style={{ width: "100%", maxHeight: "500px", overflow: "auto", backgroundColor: "#272822", color: "#fff", padding: "20px", borderRadius: "10px" }}>
-          <ul>{renderJsonAsList(searchResults)}</ul>
+           <ul>
+              {Object.entries(searchResults).map(([key, value]) => (
+                <CollapsibleItem key={key} label={key} value={value} />
+              ))}
+            </ul>
         </div>
         )}
       </div>
