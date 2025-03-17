@@ -86,10 +86,10 @@ function Home() {
 
       
 
-    <div style={{ alignItems:"center", justifyContent:"center", display:"flex"}}>
+    <div style={{ alignItems:"center", justifyContent:"center", display:"flex", paddingTop:"30px" }}>
      {!loading && searchResults && (
       <div style={{width: "700px", height: "500px"}}>
-      <MapContainer center={[searchResults.location.latitude, searchResults.location.longitude]} zoom={zoomLevel} style={{ height: "500px", width: "100%",margin: "0 auto", border:"3px solid #4CAF50", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", paddingTop:"30px" }}>
+      <MapContainer center={[searchResults.location.latitude, searchResults.location.longitude]} zoom={zoomLevel} style={{ height: "500px", width: "100%",margin: "0 auto", border:"3px solid #4CAF50", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)"}}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -99,9 +99,12 @@ function Home() {
             <Marker position={[searchResults.location.latitude, searchResults.location.longitude]} icon={icon}>
               <Popup>
                 <div>
-                  <h4>{searchResults.location.admin_boundaries.country_name}</h4>
+                  <h4>Location: {searchResults.location.admin_boundaries.country_name}, {searchResults.location.admin_boundaries.region_name}</h4>
                   <p><strong>In Conservation Area ? </strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
                   <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2)}</p>
+                  <p><strong>Average Gas Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_gas_cost.toFixed(2)}</p>
+                  <p><strong>Average Electricity Costs:</strong> £{searchResults.energy.average_energy_usage_stats.lower_layer_super_output_area.mean_electricity_cost.toFixed(2)}</p>
+                  <p><strong>Average House Price:</strong> £{searchResults.social.house_price_index.average_price}</p>
                 
                 </div>
               </Popup>
