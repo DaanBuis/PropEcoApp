@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import "leaflet/dist/leaflet.css";
 import "../styles.css";
 
 function Home() {
@@ -35,7 +34,7 @@ function Home() {
           'x-api-key': apiKey, 
         },
       });
-
+      
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
@@ -43,7 +42,7 @@ function Home() {
       
       const data = await response.json();
 
-      
+      console.log("API Response:", searchResults);
       setSearchResults(data);
 
     } catch (err) {
@@ -57,6 +56,7 @@ function Home() {
 
 
   return (
+    
     <div className="container">
 
         <div className="search-box"> 
@@ -68,7 +68,7 @@ function Home() {
           placeholder="Enter UPRN"
           className="search-input"
         />
-        <button type="submit" disabled={loading} class="search-button">
+        <button type="submit" disabled={loading} className="search-button">
           {loading ? 'Loading...' : 'Search'}
         </button>
       </form>
@@ -86,6 +86,7 @@ function Home() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         {searchResults.location && searchResults.location.latitude && searchResults.location.longitude && (
+          
             <Marker position={[searchResults.location.latitude, searchResults.location.longitude]}>
               <Popup>
                 <div>
