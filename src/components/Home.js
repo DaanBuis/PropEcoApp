@@ -131,11 +131,11 @@ function Home() {
                 
               )}
               {searchResults.location && searchResults.location.latitude && searchResults.location.longitude && (
-                <Marker position={[searchResults.transportation.nearest_airport.latitude, searchResults.transportation.nearest_airport.longitude]} icon={icon}>
+                <Marker position={[searchResults.transportation.nearest_airport.latitude, searchResults.transportation.nearest_airport.longitude]} icon={icon2}>
                   <Popup>
                     <div>
                       <h4>Nearest Airport: {searchResults.transportation.nearest_airport.name}</h4>
-                      <p><strong>Distance:</strong> {searchResults.transportation.nearest_airport.distance / 1609} miles</p>
+                      <p><strong>Distance:</strong> {(searchResults.transportation.nearest_airport.distance / 1609).toFixed(1)} miles</p>
                     </div>
                   </Popup>
                 </Marker>
@@ -179,7 +179,7 @@ function Home() {
         </div>
       )}
 
-      <footer>
+      <footer  style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', textAlign: 'center', padding: '10px 0', backgroundColor: '#4CAF50', color: 'white' }}>
         <a href="https://www.flaticon.com/free-icons/plane" title="plane icons">Plane icons created by Freepik - Flaticon</a>
       </footer>
     </div>
