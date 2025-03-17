@@ -15,6 +15,7 @@ function Home() {
 
   const icon2 = L.icon({
     iconUrl: "./airplane.png",
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
     iconSize: [35, 35],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
