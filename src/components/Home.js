@@ -5,7 +5,15 @@ import "../styles.css";
 
 
 function Home() {
-  const icon = new L.Icon.Default();
+  const icon = L.icon({
+    iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+  
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -79,7 +87,7 @@ function Home() {
 
       
 
-        <div>
+    <div>
      {!loading && searchResults && (
       <div style={{width: "700px", height: "500px"}}>
       <MapContainer center={initialPosition} zoom={zoomLevel} style={{ height: "500px", width: "100%" }}>
@@ -93,8 +101,8 @@ function Home() {
               <Popup>
                 <div>
                   <h4>{searchResults.location.admin_boundaries_country_name}</h4>
-                  <p><strong>In Conservation Area ? </strong> ${searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
-                  <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value}</p>
+                  <p><strong>In Conservation Area ? </strong> {searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
+                  <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value.toFixed(2)}</p>
                 
                 </div>
               </Popup>
@@ -106,13 +114,6 @@ function Home() {
     )}
 
 </div>
-
-{/* {searchResults && !loading && (
-        <div>
-          <h3>Search Results:</h3>
-          <pre>{JSON.stringify(searchResults, null, 2)}</pre>
-        </div>
-      )} */}
     </div>
 
   );
