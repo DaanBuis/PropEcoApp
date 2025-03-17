@@ -145,12 +145,14 @@ function Home() {
       </div>
 
       {!loading && searchResults && (  
+        <div style={{alignItems: "center", justifyContent: "center", display: "flex"}}>
       <button 
         onClick={() => setShowRawData((prev) => !prev)}
-        style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', alignItems: "center", justifyContent: "center", display: "flex" }}
+        style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer' }}
       >
         {showRawData ? 'Show Map & Info' : 'Show Raw Data'}
       </button>
+        </div>
       )}
     </div>
   );
