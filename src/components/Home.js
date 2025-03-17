@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import "../styles.css";
-import "leaflet/dist/leaflet.css";
+
 
 function Home() {
   const icon = new L.Icon.Default();
@@ -93,7 +93,7 @@ function Home() {
               <Popup>
                 <div>
                   <h4>{searchResults.location.admin_boundaries_country_name}</h4>
-                  <p><strong>In Conservation Area ? </strong> ${searchResults.planning.conservation_areas.in_conservation_area}</p>
+                  <p><strong>In Conservation Area ? </strong> ${searchResults.planning.conservation_areas.in_conservation_area ? 'Yes' : 'No'}</p>
                   <p><strong>Rainfall:</strong> {searchResults.climate.historical.average_rainfall.value}</p>
                 
                 </div>
