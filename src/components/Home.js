@@ -89,7 +89,7 @@ function Home() {
     <div style={{ alignItems:"center", justifyContent:"center", display:"flex"}}>
      {!loading && searchResults && (
       <div style={{width: "700px", height: "500px"}}>
-      <MapContainer center={[searchResults.location.latitude, searchResults.location.longitude]} zoom={zoomLevel} style={{ height: "500px", width: "100%",alignItems:"center", justifyContent:"center", display:"flex" }}>
+      <MapContainer center={[searchResults.location.latitude, searchResults.location.longitude]} zoom={zoomLevel} style={{ height: "500px", width: "100%",margin: "0 auto", border:"3px solid #4CAF50", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
